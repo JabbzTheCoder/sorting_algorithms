@@ -1,7 +1,23 @@
 #ifndef SORT_H
 #define SORT_H
 
+#include <stdio.h>
 #include <stdlib.h>
+
+/* Comparison direction macros for bitonic sort */
+#define UP 0
+#define DOWN 1
+
+/**
+ * enum bool - Enumeration of Boolean values.
+ * @false: Equals 0.
+ * @true: Equals 1.
+ */
+typedef enum bool
+{
+	false = 0,
+	true
+} bool;
 
 /**
  * struct listint_s - Doubly linked list node
@@ -12,60 +28,27 @@
  */
 typedef struct listint_s
 {
-    const int n;
-    struct listint_s *prev;
-    struct listint_s *next;
+	const int n;
+	struct listint_s *prev;
+	struct listint_s *next;
 } listint_t;
 
-/**
- * print_array - Prints an array of integers
- *
- * @array: The array to be printed
- * @size: Number of elements in @array
- */
+/* Printing helper functions */
 void print_array(const int *array, size_t size);
-
-/**
- * print_list - Prints a list of integers
- *
- * @list: The list to be printed
- */
 void print_list(const listint_t *list);
 
-/**
- * selection_sort - Sorts an array of integers using the Selection Sort algorithm
- *
- * @array: The array to be sorted
- * @size: Number of elements in @array
- */
+/* Sorting algoritms */
+void bubble_sort(int *array, size_t size);
+void insertion_sort_list(listint_t **list);
 void selection_sort(int *array, size_t size);
-
-/**
- * quick_sort - Sorts an array of integers using the Quick Sort algorithm
- *
- * @array: The array to be sorted
- * @size: Number of elements in @array
- */
 void quick_sort(int *array, size_t size);
-
-/**
- * quicksort_recursive - Recursive function for Quick sort.
- * @array: The array to be sorted.
- * @low: The low index of the partition.
- * @high: The high index of the partition.
- * @size: The size of the array.
- */
-void quicksort_recursive(int *array, int low, int high, size_t size);
-/**
- * lomuto_partition - Lomuto partition scheme for Quick sort.
- * @array: The array to be partitioned.
- * @low: The low index of the partition.
- * @high: The high index of the partition.
- * @size: The size of the array.
- *
- * Return: The partition index.
- */
-int lomuto_partition(int *array, int low, int high, size_t size);
-
+void shell_sort(int *array, size_t size);
+void cocktail_sort_list(listint_t **list);
+void counting_sort(int *array, size_t size);
+void merge_sort(int *array, size_t size);
+void heap_sort(int *array, size_t size);
+void radix_sort(int *array, size_t size);
+void bitonic_sort(int *array, size_t size);
+void quick_sort_hoare(int *array, size_t size);
 
 #endif /* SORT_H */
